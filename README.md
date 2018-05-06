@@ -13,6 +13,7 @@
 njit-client username password eth0.2 CH\\x11V7.10-0313 Oly5D62FaE94W7 >/dev/null 2>&1 &
 
 参考值
+```
 version：
 CH\x11V7.10-0313
 CH\x12V5.20-0407
@@ -21,5 +22,9 @@ CH\x20V3.60-6303
 key：
 HuaWei3COM1X
 Oly5D62FaE94W7
-
+```
 `njit-client-mips32el` 是二进制文件，在MIPS架构路由器上测试可用。
+
+# 依赖
+
+`libpcap` `openssl`

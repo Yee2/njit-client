@@ -1,7 +1,10 @@
-CROSS_COMPILE=mipsel-buildroot-linux-uclibc-
-CFLAGS= -lpcap -static -O3
-LDFLAGS=-L/tmp/linux/opt/lib 
-CPPFLAGS=-I/tmp/linux/opt/include 
+CROSS_COMPILE=
+CFLAGS= -lpcap
+#CFLAGS= -lpcap  -static -O3
+# 使用上面参数可以编译静态文件，但需要指定libpcap.a的路径
+LIBPCAP=/usr/local/lib/libpcap.a
+LDFLAGS=-L/usr/local/lib
+CPPFLAGS=-I/usr/local/include
 LIBS=-lgcrypt
 
 all:
@@ -20,8 +23,7 @@ all:
 		md5-buildin/md5_dgst.c \
 		md5-buildin/mem_clr.c \
 		fillmd5-libcrypto.c \
-		# 手动设置libpcap.a的路径
-		/tmp/linux/opt/lib/libpcap.a
+		$(LIBPCAP)
 #		fillmd5-libgcrypt.c 
 		$(CROSS_COMPILE)strip client
 clean:
