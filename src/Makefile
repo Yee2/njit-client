@@ -1,11 +1,8 @@
-CROSS_COMPILE=
-CFLAGS= -lssl -lcrypto -lpcap  -static -O3
-LDFLAGS=-L/usr/local/lib
-CPPFLAGS=-I/usr/local/include
-LIBS=-lgcrypt
+#CFLAGS= -lssl -lcrypto -lpcap  -static -O3
+OBJ=njit-client
 
 all:
-		$(CROSS_COMPILE)gcc -o client main.c \
+		$(CC) $(LDFLAGS) $(CFLAGS) main.c \
 		auth.c \
 		ip.c   \
 		njit8021xclient.c \
@@ -17,14 +14,14 @@ all:
 		h3c_AES_MD5.c \
 		h3c_dict.h \
 		fillmd5-libcrypto.c \
-		$(LDFLAGS) $(CPPFLAGS) $(CFLAGS) 
+	 	-o $(OBJ) -lssl -lcrypto -lpcap
 #		fillmd5-libgcrypt.c 
-		$(CROSS_COMPILE)strip client
+#		$(CROSS_COMPILE)strip $(OBJ)
 clean:
-	rm client
+	rm $(OBJ)
 
 install:
-	cp client /usr/bin/njit-client
+	cp  $(OBJ) /usr/bin/$(OBJ)
 
 uninstall:
-	rm /usr/bin/njit-client
+	rm /usr/bin/$(OBJ)

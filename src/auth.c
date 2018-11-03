@@ -167,7 +167,7 @@ START_AUTHENTICATION:
             else
             { // 延时后重试
                 sleep(1);
-                //DPRINTF(".");
+                DPRINTF(".");
                 SendStartPkt(adhandle, MAC);
                 // NOTE: 这里没有检查网线是否接触不良或已被拔下
             }
