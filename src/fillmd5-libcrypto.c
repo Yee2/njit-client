@@ -24,6 +24,6 @@ void FillMD5Area(uint8_t digest[], uint8_t id, const char passwd[], const uint8_
 	memcpy(msgbuf+1,	 passwd, passlen);
 	memcpy(msgbuf+1+passlen, srcMD5, 16);
 
-	(void) MD5(msgbuf, msglen, digest);
+	MD5(msgbuf, msglen, digest);
 }
 
